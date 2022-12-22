@@ -9,9 +9,9 @@ quizRouter.get("/", async (req, res) => {
   const category = req.query.category;
   const difficulty = req.query.difficulty;
   const num = +(req.query.num);
-  console.log(cat, diff, num);
-  const questions = await QuizModel.find({ category: category, difficulty: difficulty });
+  const questions = await QuizModel.find({ category, difficulty });
   questions.length = num || 0;
+  console.log(category, difficulty, num, questions);
   console.log(questions.length);
   res.send({ "questions": questions });
 });
