@@ -8,7 +8,7 @@ const quizRouter = Router();
 quizRouter.get("/", async (req, res) => {
   const category = req.query.cat;
   const difficulty = req.query.diff;
-  const num = Number(req.query.num);
+  const num = +(req.query.num);
   console.log(cat, diff, num);
   const questions = await QuizModel.find({ category: category, difficulty: difficulty });
   questions.length = num || 0;
